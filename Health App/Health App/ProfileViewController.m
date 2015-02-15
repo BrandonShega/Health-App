@@ -15,6 +15,8 @@
 @property (nonatomic, weak) IBOutlet UITextField *weightField;
 @property (nonatomic, weak) IBOutlet UITextField *bmiField;
 
+@property (nonatomic, strong) NSString *usersGender;
+
 @end
 
 @implementation ProfileViewController
@@ -27,6 +29,7 @@
     [self getUsersAge];
     [self getUsersHeight];
     [self getUsersWeight];
+    [self getUsersGender];
     
 }
 
@@ -99,21 +102,63 @@
     
 }
 
+- (void)getUsersGender
+{
+    
+    NSError *error;
+    
+    HKBiologicalSexObject *gender = [self.healthStore biologicalSexWithError:&error];
+    
+    if (gender != nil) {
+        
+        switch (gender.biologicalSex) {
+            case HKBiologicalSexNotSet:
+                
+                self.usersGender = nil;
+                
+                break;
+                
+            case HKBiologicalSexFemale:
+                
+                self.usersGender = @"female";
+                
+                break;
+                
+            case HKBiologicalSexMale:
+                
+                self.usersGender = @"male";
+                
+                break;
+                
+            default:
+                break;
+        }
+        
+    }
+    
+}
+
 //function to get user's age
 - (void)getUsersAge
 {
     
     NSError *error;
     
+    NSInteger age = 0;
+    
     //get birthday from health kit
     NSDate *birthday = [self.healthStore dateOfBirthWithError:&error];
     
-    NSDate *today = [NSDate date];
+    if (birthday != nil) {
     
-    //break up date into components
-    NSDateComponents *ageComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:birthday toDate:today options:NSCalendarWrapComponents];
-    
-    NSInteger age = [ageComponents year];
+        NSDate *today = [NSDate date];
+        
+        //break up date into components
+        NSDateComponents *ageComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:birthday toDate:today options:NSCalendarWrapComponents];
+        
+        age = [ageComponents year];
+            
+    }
     
     //set text field
     self.ageField.text = [NSString stringWithFormat:@"%li", (long)age];

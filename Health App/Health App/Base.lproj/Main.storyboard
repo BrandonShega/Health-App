@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="p0B-YZ-DXY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="p0B-YZ-DXY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -193,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpC-Fl-nFp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="2069"/>
+            <point key="canvasLocation" x="1188" y="2050.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Oe0-cU-Wi4">
@@ -208,12 +208,13 @@
                     <connections>
                         <segue destination="Xxk-H0-q6J" kind="relationship" relationship="viewControllers" id="c5H-kU-yW8"/>
                         <segue destination="gBC-xx-9ga" kind="relationship" relationship="viewControllers" id="wOG-Zu-d7u"/>
-                        <segue destination="PJz-Lh-hDm" kind="relationship" relationship="viewControllers" id="1Rz-sL-Beo"/>
+                        <segue destination="guw-NS-fTu" kind="relationship" relationship="viewControllers" id="1Rz-sL-Beo"/>
+                        <segue destination="CbZ-eD-HUg" kind="relationship" relationship="viewControllers" id="tlj-AI-RGf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p1i-IB-ECD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="607.5"/>
+            <point key="canvasLocation" x="1540.5" y="622.5"/>
         </scene>
         <!--Food Log-->
         <scene sceneID="ki7-8s-eK2">
@@ -519,10 +520,201 @@
             </objects>
             <point key="canvasLocation" x="1188" y="1334"/>
         </scene>
-        <!--Store-->
+        <!--Calorie Counter View Controller-->
+        <scene sceneID="5je-bm-oRv">
+            <objects>
+                <viewController id="5c7-if-8TI" customClass="CalorieCounterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="68E-sN-Swd"/>
+                        <viewControllerLayoutGuide type="bottom" id="kib-JW-aA2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7b2-we-aLz">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculate the amount of calories burned for an activity" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkO-91-NjN">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="79" y="82" width="243" height="70"/>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aa3-9l-egg">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="180" y="206" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zR2-5w-28q">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="180" y="261" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e6b-YM-IEG">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="180" y="322" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3fB-FC-j01">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="180" y="389" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed (mph)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zli-Xz-XTA">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="33" y="210" width="98" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight (lbs)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FV3-Sl-RSW">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="38" y="265" width="89" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incline (%)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKg-Lx-AVD">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="42" y="326" width="81" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If flat or unsure, leave 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNO-6j-fGJ">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="164" y="360" width="179" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time (minutes)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swn-9y-SUl">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="26" y="393" width="112" height="21"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Efy-qn-sbD">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Calculate Calories">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="138" y="460" width="125" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="calculateCalories:" destination="5c7-if-8TI" eventType="touchUpInside" id="qxl-ul-mJH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lF9-Ac-ZeM">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Save Data to Health Kit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="120" y="576" width="160" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="saveCalories:" destination="5c7-if-8TI" eventType="touchUpInside" id="1Nl-KT-k3t"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories Burned: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ek-3j-MQO">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="60" y="526" width="134" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRc-Rh-DHS">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="223" y="526" width="130" height="21"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="PkO-91-NjN"/>
+                                <exclude reference="Aa3-9l-egg"/>
+                                <exclude reference="zR2-5w-28q"/>
+                                <exclude reference="e6b-YM-IEG"/>
+                                <exclude reference="3fB-FC-j01"/>
+                                <exclude reference="Zli-Xz-XTA"/>
+                                <exclude reference="FV3-Sl-RSW"/>
+                                <exclude reference="QKg-Lx-AVD"/>
+                                <exclude reference="VNO-6j-fGJ"/>
+                                <exclude reference="swn-9y-SUl"/>
+                                <exclude reference="Efy-qn-sbD"/>
+                                <exclude reference="lF9-Ac-ZeM"/>
+                                <exclude reference="6Ek-3j-MQO"/>
+                                <exclude reference="eRc-Rh-DHS"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="PkO-91-NjN"/>
+                                <include reference="Aa3-9l-egg"/>
+                                <include reference="zR2-5w-28q"/>
+                                <include reference="e6b-YM-IEG"/>
+                                <include reference="3fB-FC-j01"/>
+                                <include reference="Zli-Xz-XTA"/>
+                                <include reference="FV3-Sl-RSW"/>
+                                <include reference="QKg-Lx-AVD"/>
+                                <include reference="VNO-6j-fGJ"/>
+                                <include reference="swn-9y-SUl"/>
+                                <include reference="Efy-qn-sbD"/>
+                                <include reference="lF9-Ac-ZeM"/>
+                                <include reference="6Ek-3j-MQO"/>
+                                <include reference="eRc-Rh-DHS"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="h3e-fc-WLa"/>
+                    <connections>
+                        <outlet property="calorieLabel" destination="eRc-Rh-DHS" id="7R5-c6-HnT"/>
+                        <outlet property="inclineField" destination="e6b-YM-IEG" id="XOd-zM-9EQ"/>
+                        <outlet property="speedField" destination="Aa3-9l-egg" id="TGy-fN-oBN"/>
+                        <outlet property="timeField" destination="3fB-FC-j01" id="lpX-4H-FuT"/>
+                        <outlet property="weightField" destination="zR2-5w-28q" id="7Nw-a0-5Jw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EQK-XD-H9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1897.5" y="2050.5"/>
+        </scene>
+        <!--Store View Controller-->
         <scene sceneID="QJq-IP-80j">
             <objects>
-                <viewController id="PJz-Lh-hDm" sceneMemberID="viewController">
+                <viewController id="PJz-Lh-hDm" customClass="StoreViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vfw-8k-1mt"/>
                         <viewControllerLayoutGuide type="bottom" id="EdE-Vt-sMw"/>
@@ -530,17 +722,105 @@
                     <view key="view" contentMode="scaleToFill" id="PXN-bY-e0l">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqX-ls-KMZ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Purchase">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="168" y="122" width="64" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="purchase:" destination="PJz-Lh-hDm" eventType="touchUpInside" id="W59-4X-OLr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qs8-2d-WZc">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Restore">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="174" y="175" width="53" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="restore:" destination="PJz-Lh-hDm" eventType="touchUpInside" id="X65-MZ-Khd"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UGg-sm-yuT">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="190" y="270" width="20" height="20"/>
+                                </variation>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="bqX-ls-KMZ"/>
+                                <exclude reference="qs8-2d-WZc"/>
+                                <exclude reference="UGg-sm-yuT"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="bqX-ls-KMZ"/>
+                                <include reference="qs8-2d-WZc"/>
+                                <include reference="UGg-sm-yuT"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Store" image="shopping-cart-7.png" id="aJ8-lZ-qLi"/>
+                    <navigationItem key="navigationItem" id="6UL-BW-xZd"/>
+                    <connections>
+                        <outlet property="indicator" destination="UGg-sm-yuT" id="WCa-oD-3JO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wcR-So-plv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1902" y="1334"/>
+            <point key="canvasLocation" x="2617.5" y="2050.5"/>
+        </scene>
+        <!--Store-->
+        <scene sceneID="rNJ-0l-jgh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="guw-NS-fTu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Store" image="shopping-cart-7.png" id="aJ8-lZ-qLi"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QWi-rP-YV8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PJz-Lh-hDm" kind="relationship" relationship="rootViewController" id="wsN-hx-Vma"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dI9-V5-R2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2617.5" y="1333.5"/>
+        </scene>
+        <!--Calorie Calculator-->
+        <scene sceneID="2pl-WZ-WWP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CbZ-eD-HUg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Calorie Calculator" image="dumbbell-7.png" id="Kl2-8E-ooq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hif-mw-WWW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5c7-if-8TI" kind="relationship" relationship="rootViewController" id="ACv-9H-2d2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b3t-5q-wxJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1897.5" y="1333.5"/>
         </scene>
     </scenes>
     <resources>
         <image name="book-cover-7.png" width="30" height="30"/>
+        <image name="dumbbell-7.png" width="30" height="30"/>
         <image name="man-7.png" width="29" height="30"/>
         <image name="shopping-cart-7.png" width="30" height="30"/>
     </resources>

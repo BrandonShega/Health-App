@@ -13,6 +13,8 @@
 		C51785501A8F05D4008EC48E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C517854F1A8F05D4008EC48E /* Images.xcassets */; };
 		C51785531A8F05D4008EC48E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51785511A8F05D4008EC48E /* LaunchScreen.xib */; };
 		C517855F1A8F05D4008EC48E /* Health_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C517855E1A8F05D4008EC48E /* Health_AppTests.m */; };
+		C52123271A910F16009427C1 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C52123261A910F16009427C1 /* StoreViewController.m */; };
+		C521232B1A911EC6009427C1 /* CalorieCounterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C521232A1A911EC6009427C1 /* CalorieCounterViewController.m */; };
 		C56801D11A8FC3E100B5C909 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56801D01A8FC3E100B5C909 /* HealthKit.framework */; };
 		C56801D51A8FC7F200B5C909 /* FoodLogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56801D41A8FC7F200B5C909 /* FoodLogTableViewController.m */; };
 		C56801D81A8FC9D400B5C909 /* FoodDataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C56801D61A8FC9D400B5C909 /* FoodDataStore.xcdatamodeld */; };
@@ -250,6 +252,10 @@
 		C51785581A8F05D4008EC48E /* Health AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Health AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C517855D1A8F05D4008EC48E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C517855E1A8F05D4008EC48E /* Health_AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Health_AppTests.m; sourceTree = "<group>"; };
+		C52123251A910F16009427C1 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
+		C52123261A910F16009427C1 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
+		C52123291A911EC6009427C1 /* CalorieCounterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalorieCounterViewController.h; sourceTree = "<group>"; };
+		C521232A1A911EC6009427C1 /* CalorieCounterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalorieCounterViewController.m; sourceTree = "<group>"; };
 		C56801CF1A8FC3E000B5C909 /* Health App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Health App.entitlements"; sourceTree = "<group>"; };
 		C56801D01A8FC3E100B5C909 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		C56801D31A8FC7F200B5C909 /* FoodLogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodLogTableViewController.h; sourceTree = "<group>"; };
@@ -522,6 +528,8 @@
 		C51785411A8F05D4008EC48E /* Health App */ = {
 			isa = PBXGroup;
 			children = (
+				C52123281A911EB2009427C1 /* Calorie Counter */,
+				C52123241A910F07009427C1 /* Store */,
 				C59F94571A9044DC0094E58F /* Profile */,
 				C59F92C51A9042EA0094E58F /* Assets */,
 				C59F92B51A8FDB680094E58F /* Food Class */,
@@ -562,6 +570,24 @@
 				C517855D1A8F05D4008EC48E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C52123241A910F07009427C1 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				C52123251A910F16009427C1 /* StoreViewController.h */,
+				C52123261A910F16009427C1 /* StoreViewController.m */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		C52123281A911EB2009427C1 /* Calorie Counter */ = {
+			isa = PBXGroup;
+			children = (
+				C52123291A911EC6009427C1 /* CalorieCounterViewController.h */,
+				C521232A1A911EC6009427C1 /* CalorieCounterViewController.m */,
+			);
+			name = "Calorie Counter";
 			sourceTree = "<group>";
 		};
 		C56801D21A8FC7BF00B5C909 /* Food Log */ = {
@@ -1126,6 +1152,7 @@
 				C56801D51A8FC7F200B5C909 /* FoodLogTableViewController.m in Sources */,
 				C59F92B81A8FDDC20094E58F /* Food.m in Sources */,
 				C59F92C11A8FFE740094E58F /* FoodTableViewController.m in Sources */,
+				C521232B1A911EC6009427C1 /* CalorieCounterViewController.m in Sources */,
 				C56801D81A8FC9D400B5C909 /* FoodDataStore.xcdatamodeld in Sources */,
 				C51785481A8F05D4008EC48E /* AppDelegate.m in Sources */,
 				C59F92C41A903B540094E58F /* FoodObject.m in Sources */,
@@ -1133,6 +1160,7 @@
 				C59F945A1A9044ED0094E58F /* ProfileViewController.m in Sources */,
 				C51785451A8F05D4008EC48E /* main.m in Sources */,
 				C59F92B41A8FDB570094E58F /* Food+Create.m in Sources */,
+				C52123271A910F16009427C1 /* StoreViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

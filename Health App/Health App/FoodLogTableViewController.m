@@ -143,7 +143,7 @@
     Food *food = [self.foods objectAtIndex:indexPath.row];
     
     cell.textLabel.text = food.name;
-    cell.detailTextLabel.text = [food.calories stringValue];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ calories", [food.calories stringValue]];
     
     return cell;
 }
