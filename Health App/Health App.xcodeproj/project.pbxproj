@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C51785451A8F05D4008EC48E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C51785441A8F05D4008EC48E /* main.m */; };
 		C51785481A8F05D4008EC48E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C51785471A8F05D4008EC48E /* AppDelegate.m */; };
-		C517854B1A8F05D4008EC48E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C517854A1A8F05D4008EC48E /* ViewController.m */; };
 		C517854E1A8F05D4008EC48E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C517854C1A8F05D4008EC48E /* Main.storyboard */; };
 		C51785501A8F05D4008EC48E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C517854F1A8F05D4008EC48E /* Images.xcassets */; };
 		C51785531A8F05D4008EC48E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51785511A8F05D4008EC48E /* LaunchScreen.xib */; };
@@ -226,6 +225,7 @@
 		C59F94551A9042F70094E58F /* wooden-box-7.png in Resources */ = {isa = PBXBuildFile; fileRef = C59F938D1A9042F70094E58F /* wooden-box-7.png */; };
 		C59F94561A9042F70094E58F /* write-simple-7.png in Resources */ = {isa = PBXBuildFile; fileRef = C59F938E1A9042F70094E58F /* write-simple-7.png */; };
 		C59F945A1A9044ED0094E58F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59F94591A9044ED0094E58F /* ProfileViewController.m */; };
+		C5E3C2EF1A905D860009B594 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E3C2EE1A905D860009B594 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,8 +244,6 @@
 		C51785441A8F05D4008EC48E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C51785461A8F05D4008EC48E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C51785471A8F05D4008EC48E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C51785491A8F05D4008EC48E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C517854A1A8F05D4008EC48E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C517854D1A8F05D4008EC48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C517854F1A8F05D4008EC48E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C51785521A8F05D4008EC48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -472,6 +470,7 @@
 		C59F938E1A9042F70094E58F /* write-simple-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "write-simple-7.png"; sourceTree = "<group>"; };
 		C59F94581A9044ED0094E58F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		C59F94591A9044ED0094E58F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		C5E3C2EE1A905D860009B594 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -481,6 +480,7 @@
 			files = (
 				C59F92AE1A8FD83D0094E58F /* Foundation.framework in Frameworks */,
 				C59F92AC1A8FD8370094E58F /* UIKit.framework in Frameworks */,
+				C5E3C2EF1A905D860009B594 /* StoreKit.framework in Frameworks */,
 				C59F92B91A8FE27B0094E58F /* CoreData.framework in Frameworks */,
 				C56801D11A8FC3E100B5C909 /* HealthKit.framework in Frameworks */,
 			);
@@ -499,6 +499,7 @@
 		C51785361A8F05D4008EC48E = {
 			isa = PBXGroup;
 			children = (
+				C5E3C2EE1A905D860009B594 /* StoreKit.framework */,
 				C59F92AD1A8FD83D0094E58F /* Foundation.framework */,
 				C59F92AB1A8FD8370094E58F /* UIKit.framework */,
 				C59F92A91A8FD82B0094E58F /* CoreData.framework */,
@@ -528,8 +529,6 @@
 				C56801CF1A8FC3E000B5C909 /* Health App.entitlements */,
 				C51785461A8F05D4008EC48E /* AppDelegate.h */,
 				C51785471A8F05D4008EC48E /* AppDelegate.m */,
-				C51785491A8F05D4008EC48E /* ViewController.h */,
-				C517854A1A8F05D4008EC48E /* ViewController.m */,
 				C517854C1A8F05D4008EC48E /* Main.storyboard */,
 				C517854F1A8F05D4008EC48E /* Images.xcassets */,
 				C51785511A8F05D4008EC48E /* LaunchScreen.xib */,
@@ -869,6 +868,9 @@
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 						};
 					};
 					C51785571A8F05D4008EC48E = {
@@ -1123,7 +1125,6 @@
 			files = (
 				C56801D51A8FC7F200B5C909 /* FoodLogTableViewController.m in Sources */,
 				C59F92B81A8FDDC20094E58F /* Food.m in Sources */,
-				C517854B1A8F05D4008EC48E /* ViewController.m in Sources */,
 				C59F92C11A8FFE740094E58F /* FoodTableViewController.m in Sources */,
 				C56801D81A8FC9D400B5C909 /* FoodDataStore.xcdatamodeld in Sources */,
 				C51785481A8F05D4008EC48E /* AppDelegate.m in Sources */,

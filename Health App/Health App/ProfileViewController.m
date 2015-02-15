@@ -23,12 +23,14 @@
 {
     [super viewDidLoad];
     
+    //get user's information
     [self getUsersAge];
     [self getUsersHeight];
     [self getUsersWeight];
     
 }
 
+//function to calculate user's BMI
 - (IBAction)calculateBMI:(id)sender
 {
     
@@ -41,10 +43,12 @@
     
 }
 
+//function to save user's profile
 - (IBAction)saveProfile:(id)sender
 {
     NSMutableArray *objectsToSave = [NSMutableArray array];
     
+    //grab values from text fields
     double weight = [[self.weightField text] doubleValue];
     double height = [[self.heightField text] doubleValue];
     double bmi = [[self.bmiField text] doubleValue];
@@ -61,16 +65,20 @@
     HKQuantityType *bmiType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMassIndex];
     HKQuantity *bmiQuantity = [HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:bmi];
     
+    //sample date
     NSDate *today = [NSDate date];
     
+    //create samples
     HKQuantitySample *heightSample = [HKQuantitySample quantitySampleWithType:heightType quantity:heightQuantity startDate:today endDate:today];
     HKQuantitySample *weightSample = [HKQuantitySample quantitySampleWithType:weightType quantity:weightQuantity startDate:today endDate:today];
     HKQuantitySample *bmiSample = [HKQuantitySample quantitySampleWithType:bmiType quantity:bmiQuantity startDate:today endDate:today];
     
+    //add to save array
     [objectsToSave addObject:heightSample];
     [objectsToSave addObject:weightSample];
     [objectsToSave addObject:bmiSample];
     
+    //save objects to health kit
     [self.healthStore saveObjects:objectsToSave withCompletion:^(BOOL success, NSError *error) {
        
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -91,23 +99,28 @@
     
 }
 
+//function to get user's age
 - (void)getUsersAge
 {
     
     NSError *error;
     
+    //get birthday from health kit
     NSDate *birthday = [self.healthStore dateOfBirthWithError:&error];
     
     NSDate *today = [NSDate date];
     
+    //break up date into components
     NSDateComponents *ageComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:birthday toDate:today options:NSCalendarWrapComponents];
     
     NSInteger age = [ageComponents year];
     
+    //set text field
     self.ageField.text = [NSString stringWithFormat:@"%li", (long)age];
     
 }
 
+//function to get user's height
 - (void)getUsersHeight
 {
     
@@ -115,19 +128,23 @@
     
     NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:HKSampleSortIdentifierEndDate ascending:NO];
     
+    //query to get height sample points
     HKSampleQuery *query = [[HKSampleQuery alloc] initWithSampleType:sampleType predicate:nil limit:1 sortDescriptors:@[descriptor] resultsHandler:^(HKSampleQuery *query, NSArray *results, NSError *error) {
         
         HKQuantitySample *quantitySample = [results firstObject];
         HKQuantity *quantity = [quantitySample quantity];
         
+        //jump back to main thread
         dispatch_async(dispatch_get_main_queue(), ^{
            
             double height = 0.0;
             
+            //if something was returned
             if (quantity != nil) {
                 
                 height = [quantity doubleValueForUnit:[HKUnit inchUnit]];
                 
+                //set text field
                 self.heightField.text = [NSString stringWithFormat:@"%g", height];
                 
             }
@@ -136,10 +153,12 @@
         
     }];
     
+    //execute query
     [self.healthStore executeQuery:query];
     
 }
 
+//function to get user's weight
 - (void)getUsersWeight
 {
     
@@ -147,19 +166,23 @@
     
     NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:HKSampleSortIdentifierEndDate ascending:NO];
     
+    //query to get weight sample points
     HKSampleQuery *query = [[HKSampleQuery alloc] initWithSampleType:sampleType predicate:nil limit:1 sortDescriptors:@[descriptor] resultsHandler:^(HKSampleQuery *query, NSArray *results, NSError *error) {
         
         HKQuantitySample *quantitySample = [results firstObject];
         HKQuantity *quantity = [quantitySample quantity];
         
+        //jump back to main thread
         dispatch_async(dispatch_get_main_queue(), ^{
             
             double weight = 0.0;
             
+            //if something was returned
             if (quantity != nil) {
                 
                 weight = [quantity doubleValueForUnit:[HKUnit poundUnit]];
                 
+                //set text field
                 self.weightField.text = [NSString stringWithFormat:@"%g", weight];
                 
             }
@@ -168,6 +191,7 @@
         
     }];
     
+    //execute query
     [self.healthStore executeQuery:query];
     
 }

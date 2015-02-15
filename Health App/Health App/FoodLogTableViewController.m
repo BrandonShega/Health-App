@@ -26,15 +26,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //check if health kit is available on this device
     if ([HKHealthStore isHealthDataAvailable]) {
         
+        //set data types we want to read and write
         NSSet *dataTypesToWrite = [self dataTypesToWrite];
         NSSet *dataTypesToRead = [self dataTypesToRead];
         
+        //request authorization
         [self.healthStore requestAuthorizationToShareTypes:dataTypesToWrite readTypes:dataTypesToRead completion:^(BOOL success, NSError *error) {
             
             if (!success) {
                 
+                //user did not authorize
                 NSLog(@"Health Kit was not given the correct permissions");
                 
                 return;
@@ -47,6 +51,7 @@
     
     self.foods = [NSMutableArray array];
     
+    //pull most recent data from health kit
     [self updateLog];
     
 }
@@ -67,6 +72,7 @@
     
     NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:startDate endDate:endDate options:HKQueryOptionNone];
     
+    //query to find sample types for calories consumed
     HKSampleQuery *query = [[HKSampleQuery alloc] initWithSampleType:sampleType predicate:predicate limit:HKObjectQueryNoLimit sortDescriptors:nil resultsHandler:^(HKSampleQuery *query, NSArray *results, NSError *error) {
         
         if (!results) {
@@ -79,29 +85,37 @@
             
         }
         
+        //jump back to main thread
         dispatch_async(dispatch_get_main_queue(), ^{
             
+            //clear list out of existing data
             [self.foods removeAllObjects];
             
+            //loop through each result
             for (NSInteger i = 0; i < [results count]; i++) {
                 
+                //create new FoodObject
                 FoodObject *food = [FoodObject new];
                 
+                //assign properties
                 HKQuantitySample *sample = (HKQuantitySample *)results[i];
                 double foodCalories = [[sample quantity] doubleValueForUnit:[HKUnit kilocalorieUnit]];
                 food.name = [[sample metadata] objectForKey:HKMetadataKeyFoodType];
                 food.calories = @(foodCalories);
                 
+                //add to array
                 [self.foods addObject:food];
                 
             }
             
+            //reload tableView data
             [self.tableView reloadData];
             
         });
         
     }];
     
+    //execute query
     [self.healthStore executeQuery:query];
     
 }
@@ -136,7 +150,7 @@
 
 - (NSSet *)dataTypesToWrite
 {
-    
+    //data types that we would like to write to
     HKQuantityType *energyConsumed = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryEnergyConsumed];
     HKQuantityType *energyBurned = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierActiveEnergyBurned];
     HKQuantityType *height = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeight];
@@ -150,6 +164,7 @@
 - (NSSet *)dataTypesToRead
 {
     
+    //data types that we would like to read from
     HKQuantityType *energyConsumed = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryEnergyConsumed];
     HKQuantityType *energyBurned = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierActiveEnergyBurned];
     HKQuantityType *height = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeight];
@@ -163,17 +178,20 @@
 
 - (IBAction)performUnwindSegue:(UIStoryboardSegue *)segue
 {
-    
+    //unwind segue that runs when we select a food to add to our log
     FoodTableViewController *ftvc = [segue sourceViewController];
     
     Food *selectedFood = ftvc.selectedFood;
     
+    //add food to log
     [self addFood:selectedFood];
 }
 
+//function to add food to log
 - (void)addFood:(Food *)food
 {
     
+    //create quantity type for calories consumed
     HKQuantityType *quantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryEnergyConsumed];
     
     HKQuantity *quantity = [HKQuantity quantityWithUnit:[HKUnit kilocalorieUnit] doubleValue:[food.calories doubleValue]];
@@ -182,18 +200,23 @@
     
     NSDictionary *metaData = @{HKMetadataKeyFoodType:food.name};
     
+    //create new food sample
     HKQuantitySample *foodSample = [HKQuantitySample quantitySampleWithType:quantityType quantity:quantity startDate:today endDate:today metadata:metaData];
     
+    //save object to health kit
     [self.healthStore saveObject:foodSample withCompletion:^(BOOL success, NSError *error) {
         
+        //jump back to main thread
         dispatch_async(dispatch_get_main_queue(), ^{
         
             if (success) {
                 
+                //insert new food into array for tableView
                 [self.foods insertObject:food atIndex:0];
                 
                 NSIndexPath *insertedRow = [NSIndexPath indexPathForRow:0 inSection:0];
                 
+                //animate row insertion
                 [self.tableView insertRowsAtIndexPaths:@[insertedRow] withRowAnimation:UITableViewRowAnimationAutomatic];
                 
                 NSLog(@"Saved object successfully into health store.");
@@ -219,6 +242,7 @@
     
     if ([[segue identifier] isEqualToString:@"ChooseFood"]) {
         
+        //pass Core Data context to modal next view controller
         FoodTableViewController *ftvc = [segue destinationViewController];
         ftvc.managedObjectContext = self.managedObjectContext;
         

@@ -40,6 +40,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+//function to save a new food to the list
 - (IBAction)saveAction:(id)sender
 {
     NSNumberFormatter *nf = [NSNumberFormatter new];
@@ -54,9 +56,10 @@
     
 }
 
+//user cancelled adding food
 - (IBAction)cancelAction:(id)sender
 {
-    
+    //dismiss modal view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

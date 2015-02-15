@@ -27,6 +27,8 @@
     [super viewDidLoad];
     
     NSError *error;
+    
+    //set fetchedResultsController
     if (![[self fetchedResultsController] performFetch:&error]) {
         
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -162,11 +164,13 @@
     
     if ([[segue identifier] isEqualToString:@"AddFood"]) {
         
+        //pass Core Data Context to next view controller
         AddFoodViewController *afvc = [segue destinationViewController];
         afvc.managedObjectContext = self.managedObjectContext;
         
     } else if ([[segue identifier] isEqualToString:@"Chose Food"]) {
         
+        //user selected a food, pass it back to previous view controller
         NSIndexPath *selectedRow = self.foodTableView.indexPathForSelectedRow;
         
         self.selectedFood = [self.fetchedResultsController objectAtIndexPath:selectedRow];

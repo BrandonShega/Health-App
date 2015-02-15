@@ -32,10 +32,13 @@
     UINavigationController *navigationController = (UINavigationController *)[[tabbarController viewControllers] objectAtIndex:0];
     FoodLogTableViewController *foodLogTableViewController = (FoodLogTableViewController *)[[navigationController viewControllers] objectAtIndex:0];
     
+    //assign Core Data context to view controller that uses it
     foodLogTableViewController.managedObjectContext = self.managedObjectContext;
     
+    //create new health store
     self.healthStore = [HKHealthStore new];
     
+    //assign health store to all child view controllers of our main view controller
     for (UINavigationController *controller in tabbarController.viewControllers) {
         
         id viewController = controller.topViewController;
@@ -73,6 +76,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+//save Core Data context
 - (void)saveContext
 {
     NSError *error;

@@ -10,11 +10,13 @@
 
 @implementation Food (Create)
 
+//category function to create new instance and insert into Core Data
 + (Food *)foodWithName:(NSString *)name calories:(NSNumber *)calories inManagedObjectContext:(NSManagedObjectContext *)context
 {
     
     Food *newFood = nil;
     
+    //request to see if unique object already exists
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
     request.predicate = [NSPredicate predicateWithFormat:@"name = %@", name];
     
@@ -40,6 +42,7 @@
     
 }
 
+//category function to create new instance without inserting into database
 + (Food *)foodWithName:(NSString *)name calories:(NSNumber *)calories
 {
     
